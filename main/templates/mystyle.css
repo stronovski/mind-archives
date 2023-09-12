@@ -1,0 +1,47 @@
+body {
+    font: Lucida Console;
+    font-family: var(--body-font);
+    font-kerning: auto;
+    font-variant-ligatures: common-ligatures contextual;
+    font-variant-numeric: lining-nums proportional-nums;
+    font-weight: var(--wght, revert);
+    text-align: center;
+  }
+  
+  .page-title-centered {
+    background-image: url(https://cdn.discordapp.com/attachments/847002049291223041/903344823518519356/20562022_c452b8c7fa_b.png);
+    text-align: center;
+    color: white;
+    padding: 50px;
+  }
+  
+  ul {
+    margin: 10px;
+    padding: 10px;
+    overflow: hidden;
+    background-color: rgb(200, 200, 200);
+    list-style-type: none;
+  
+  }
+  
+  #container {
+    display: inline-block; 
+    text-align: left;
+  }
+  
+  li {
+    float: left;
+    padding: 5px;
+    text-align: center;
+    text-transform: uppercase;
+  }
+  
+  li a {
+    color: black;
+  }
+  
+  li a:hover {
+    background-color: black;
+    color: white;
+  }
+  
