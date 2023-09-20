@@ -6,13 +6,11 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from django.core import serializers
 
-# Create your views here.
 def show_main(request):
     products = Product.objects.all()
 
     context = {
-        'app_name': 'The Mind Archives',
-        'name': 'Andi Salsabila', # Nama kamu
+        'name': 'Sasha', # Nama kamu
         'class': 'PBP A', # Kelas PBP kamu
         'products': products
     }

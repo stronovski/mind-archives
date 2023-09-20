@@ -1,13 +1,16 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>Shopping List Page</h1>
+<h1>The Mind Archives</h1>
 
 <h5>Name:</h5>
 <p>{{name}}</p>
 
 <h5>Class:</h5>
 <p>{{class}}</p>
+
+<!-- Tambahkan pesan dengan jumlah item -->
+<p>You stored {{ products|length }} item(s) on this website</p>
 
 <table>
     <tr>
