@@ -1,88 +1,40 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <style>
-        body {
-            font: Lucida Console;
-            font-family: var(--body-font);
-            font-kerning: auto;
-            font-variant-ligatures: common-ligatures contextual;
-            font-variant-numeric: lining-nums proportional-nums;
-            font-weight: var(--wght, revert);
-            text-align: center;
-        }
+{% extends 'base.html' %}
 
-        .page-title-centered {
-            background-image: url(https://cdn.discordapp.com/attachments/847002049291223041/903344823518519356/20562022_c452b8c7fa_b.png);
-            text-align: center;
-            color: white;
-            padding: 50px;
-        }
+{% block content %}
+<h1>Shopping List Page</h1>
 
-        ul {
-            margin: 10px;
-            padding: 10px;
-            overflow: hidden;
-            background-color: rgb(200, 200, 200);
-            list-style-type: none;
-        }
+<h5>Name:</h5>
+<p>{{name}}</p>
 
-        #container {
-            display: inline-block;
-            text-align: left;
-        }
+<h5>Class:</h5>
+<p>{{class}}</p>
 
-        li {
-            float: left;
-            padding: 5px;
-            text-align: center;
-            text-transform: uppercase;
-        }
+<table>
+    <tr>
+        <th>Name</th>
+        <th>Price</th>
+        <th>Description</th>
+        <th>Date Added</th>
+    </tr>
 
-        li a {
-            color: black;
-        }
+    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
 
-        li a:hover {
-            background-color: black;
-            color: white;
-        }
-    </style>
-</head>
-<body>
+    {% for product in products %}
+    <tr>
+        <td>{{product.name}}</td>
+        <td>{{product.price}}</td>
+        <td>{{product.description}}</td>
+        <td>{{product.date_added}}</td>
+    </tr>
+    {% endfor %}
+</table>
 
-<div id="page-title">
-    <div class="page-title-centered">
-        <h1> {{ app_name }} </h1>
-        <h3> The record of all the visual imageries that ever mattered to the soul of an unfortunate man </h3>
-        <p> {{ name }} </p>
-        <p> {{ class }}</p>
-    </div>
-</div>
+<br />
 
-<div id="container">
-    <ul>
-        <li> <a class="active" href="#home"> Home </a> </li>
-        <li> <a href="#blog"> Blog </a> </li>
-        <li> <a href="#collections"> Collections </a> </li>
-        <li> <a href="#contacts"> Contacts </a> </li>
-    </ul>
-</div>
+<a href="{% url 'main:create_product' %}">
+    <button>
+        Add New Product
+    </button>
+</a>
 
-<h2> Life / La Vie </h2>
-<h4> An illustration by Gao Xingjian </h4>
-<a> <img src="https://files.ocula.com/anzax/3c/3c518c01-5aef-4ab3-9a53-253419aed886_650_528.jpg" width="300"> </a>
-<p> 13/04/2003 </p>
-<p> "Assume not we are the thing we were." </p>
-
-<br>
-
-<h2> Untitled (Missing Values) </h2>
-<h4> An illustration by Ting Yi Ting </h4>
-<a href="https://www.flickr.com/photos/tingyiting/2589429782/"> <img src="https://64.media.tumblr.com/08e16416aef961ac3b8be7d6da833722/tumblr_ml76gcsiKO1qaxnilo1_500.jpg" width="300"> </a>
-<p> 11/09/2013 </p>
-<p> "I still want to feel as though I am me." </p>
-<br>
-
-</body>
-</html>
+{% endblock content %}
