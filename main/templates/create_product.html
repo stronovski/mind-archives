@@ -1,7 +1,15 @@
 {% extends 'base.html' %} 
 
 {% block content %}
-<h1>Add New Product</h1>
+
+<div class="header" style="width:100%; margin: 0px;"> 
+    <h1>{{ app_name }}</h1>
+    <p>
+        The record of all the visual imageries that ever mattered to the soul of an unfortunate man.
+    </p>
+</div>
+
+<h3>Add New Item Here: </h3>
 
 <form method="POST">
     {% csrf_token %}

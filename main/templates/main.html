@@ -1,7 +1,22 @@
 {% extends 'base.html' %}
 
 {% block content %}
-<h1>The Mind Archives</h1>
+
+<div id="page-title">
+    <div class="page-title-centered">
+        <h1> {{ app_name }} </h1>
+        <h3> The record of all the visual imageries that ever mattered to the soul of an unfortunate man </h3>
+    </div>
+</div>
+
+<div id="container">
+    <ul>
+        <li> <a class="active" href="#home"> Home </a> </li>
+        <li> <a href="#blog"> Blog </a> </li>
+        <li> <a href="#collections"> Collections </a> </li>
+        <li> <a href="#contacts"> Contacts </a> </li>
+    </ul>
+</div>
 
 <h5>Name:</h5>
 <p>{{name}}</p>
@@ -15,6 +30,7 @@
 <table>
     <tr>
         <th>Name</th>
+        <th>Amount</th>
         <th>Price</th>
         <th>Description</th>
         <th>Date Added</th>
@@ -25,18 +41,49 @@
     {% for product in products %}
     <tr>
         <td>{{product.name}}</td>
-        <td>{{product.price}}</td>
+        <td>
+            <a href="{% url 'main:add_amount' product.id %}">
+                <button>
+                    +
+                </button>
+            </a> 
+
+            {{product.amount}}
+
+            <a href="{% url 'main:sub_amount' product.id %}">
+                <button>
+                    -
+                </button>
+            </a> 
+        </td>
+        <td align="center">{{product.price}}</td>
         <td>{{product.description}}</td>
         <td>{{product.date_added}}</td>
+        <td> 
+            <a href="{% url 'main:product_delete' product.id %}">
+                <button>
+                    Delete Product
+                </button>
+            </a> 
+        </td>
     </tr>
     {% endfor %}
 </table>
+
+<h5>Sesi terakhir login: {{ last_login }}</h5>
 
 <br />
 
 <a href="{% url 'main:create_product' %}">
     <button>
         Add New Product
+    </button>
+</a>
+
+
+<a href="{% url 'main:logout' %}">
+    <button>
+        Logout
     </button>
 </a>
 
