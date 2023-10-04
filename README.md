@@ -3,6 +3,39 @@
 Nama    : Andi Salsabila A
 NPM     : 2206083571
 
+## Tugas 4
+### 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
+Terdapat beberapa element selector, seperti element selector, class selector, ID selector, dan attribute selector. Keempatnya memiliki fungsi masing-masing seperti berikut:
+- Class Selector:
+class selector digunakan untuk memilih semua elemen yang memiliki atribut class yang spesifik, sehingga dapat digunakan untuk mengaplikasikan style ke elemen-elemen berbeda yang memiliki class yang sama dan juga untuk membuat style dari grup elemen menjadi lebih konsisten.
+
+- Element Selector: 
+element selector digunakan untuk memilih semua elemen dari tipe yang ada dan digunakan untuk mengaplikasikan sebuah style secara universal ke suatu elemen dari HTML.
+
+- ID Selector
+id selector digunakan untuk mengaplikasikan syle ke sebuah atribut id yang spesifik, sehingga lebih sering digunakan untuk mengganti style sebuah elemen yang lebih khusus dan unik dibandingkan dengan elemen-elemen lain.
+
+- Attribute Selector
+attribute selector memilih elemen berdasarkan value dari atribut yang mereka miliki dan digunakan untuk memilih elemen dengan atribut yang spesifik.
+
+### 2. Jelaskan HTML5 Tag yang kamu ketahui.
+<header> : merupakan container untuk elemen-elemen yang berada di paling atas. header sendiri dapat berisi beberapa hal seperti navigasi, perkenalan web, hero, dan lain sebagainya.
+<footer> : merupakan container untuk elemen-elemen yang berada di paling bawah.
+<nav>: digunakan untuk mengisi elemen-elemen yang merupakan navigation links
+<audio>: digunakan untuk meng-embed audio stream di dalam dokumen HTML.
+
+### 3. Jelaskan perbedaan antara margin dan padding.
+Margin merupakan space elemen yang dapat memberikan ruang di luar border, sehingga dapat memberikan jarak antara satu elemen dengan elemen yang lain.
+Padding merupakan space yang dapat memberikan ruang pada area di dalam border. Padding sendiri dapat memiliki background dari elemen tersebut, sehingga kerap kali digunakan untuk pembuatan button dan lain sebagainya.
+
+### 4.  Jelaskan perbedaan antara framework CSS Tailwind dan Bootstrap. Kapan sebaiknya kita menggunakan Bootstrap daripada Tailwind, dan sebaliknya?
+Bootstrap merupakan CSS Framework yang melakukan pendekatan high-level bagi pengguna. Karena sifatnya yang lebih mudah, Bootstrap lebih ramah digunakan bagi pemula karena adanya komponen dan style yang telah ditentukan sebelumnya. Meskipun begitu, Bootstrap tidak memiliki fleksibilitas yang tinggi dibandingkan dengan Tailwind dan dapat menghasilkan ukuran file menjadi lebih besar karena adanya berbagai variasi style dan komponen yang digunakan. Bootstrap dapat digunakan jika pengembang ingin membuat suatu aplikasi web yang membutuhkan waktu yang sedikit untuk dikembangkan dan juga tidak memiliki elemen design yang memiliki signifikansi tinggi untuk dikustomisasi.
+
+Tailwind merupakan CSS Framework yang memiliki fleksibilitas tinggi karena dapat dikustomisasi sesuai dengan keinginan developer. Selain itu, Tailwind hanya membutuhkan size yang lebih kecil dibandinkan dengan Bootstrap karena hanya melibatkan style yang digunakan. Meskipun begitu, Tailwind memiliki tingkat kesulitan yang lebih tinggi bagi pemula dan memiliki learning curve yang lebih curam. Tailwind dapat digunakan ketika aplikasi web yang ingin dikembangkan memerlukan fleksibilitas desain dan juga kuasa penuh atas desain web yang akan dibentuk.
+
+### 4. Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+Untuk mengimplementasikan checklist yang ada, pertama-tama, saya mengubah tampilan pada setiap page dengan menggunakan internal CSS dengan bantuan Bootstrap. Dengan hal ini, saya mengganti berbagai komponen yang ada di dalam main seperti warna, font, dan lain sebagainya. Setelah itu, saya menyesuaikan padding dan margin sesuai dengan kebutuhan. Selain itu, header, hero, dan footer juga ditambahkan di masing-masing page yang akan digunakan jika pengguna telah melakukan login dengan adanya Bootstrap. Untuk mengimplementasikan elemen-elemen desain di dalam tugas ini, diperlukan berbagai trial-and-error untuk memastikan bahwa desain aplikasi web sesuai dengan visi yang ingin dituju. 
+
 ## Tugas 3
 
 ### 1. Apa itu Django UserCreationForm, dan jelaskan apa kelebihan dan kekurangannya?

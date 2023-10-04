@@ -1,19 +1,17 @@
-{% extends 'base.html' %} 
+{% extends 'base.html' %}
+
+{% load static %}
 
 {% block content %}
 <style>
     body {
         font-family: Montserrat;
     }
+
     h1 {
         text-align: center;
         font-size: 40px;
         margin-top: 20px;
-    }
-
-    h3 {
-        margin-top: 20px;
-        text-align: center;
     }
 
     h5 {
@@ -54,71 +52,6 @@
         text-align: center;
     }
 
-    button {
-        padding: 4px 8px;
-        background-color: gray;
-        color: white;
-        border: none;
-        
-        cursor: pointer;
-        margin-right: 5px;
-    }
-    
-    a.button-link {
-        text-decoration: none;
-    }
-
-    h4#last-login {
-        text-align: center;
-        margin-top: 20px;
-        font-size: 48px;
-    }
-
-    div.button-container {
-        text-align: center;
-        margin-top: 20px;
-        margin-bottom: 20px;
-    }
-
-    a.button-link {
-        text-decoration: none;
-        display: inline-block; 
-        margin: 0 10px; 
-    }
-
-    footer {
-        text-align: center;
-        background-color: #333;
-        color: white;
-        padding: 10px 10px;
-        margin-top: 20px;
-    }
-
-    .transparent-background {
-        background-color: #333 !important;
-    }
-
-    .navbar {
-        background-color: #333 ;
-    }
-    .p-5{
-        padding-bottom: 10px;
-    }
-
-    .name {
-        margin-top: 20px;
-    }
-
-    .name-2 {
-        margin-bottom: 20px;
-    } 
-
-    h1 {
-        text-align: center;
-        font-size: 40px;
-        margin-top: 20px;
-    }
-
     form {
         text-align: center;
         margin-top: 20px;
@@ -137,7 +70,7 @@
 
     input[type="submit"] {
         padding: 5px 10px;
-        background-color: #333;
+        background-color: gray;
         color: white;
         border: none;
         cursor: pointer;
@@ -190,7 +123,13 @@
 </div>
 <!-- Hero -->
 
-<h3>Add New Item Here: </h3>
+<head>
+    <meta charset="UTF-8">
+    <title>Edit Product</title>
+    <link rel="stylesheet" href="mystyle.css">
+</head>
+
+<h1>Edit Product</h1>
 
 <form method="POST">
     {% csrf_token %}
@@ -199,11 +138,12 @@
         <tr>
             <td></td>
             <td>
-                <input type="submit" value="Add Product"/>
+                <input type="submit" value="Edit Product"/>
             </td>
         </tr>
     </table>
 </form>
+
 
 <footer class="bg-dark text-center text-white">
     <!-- Grid container -->
