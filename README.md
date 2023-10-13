@@ -3,6 +3,28 @@
 Nama    : Andi Salsabila A
 NPM     : 2206083571
 
+tautan: http://andi-salsabila21-tugas.pbp.cs.ui.ac.id/
+
+## Tugas 5
+### Jelaskan perbedaan antara asynchronous programming dengan synchronous programming.
+Synchronous programming dan asynchronous programming merupakan paradigma pemrograman yang memiliki perbedaan dalam segi penanganan eksekusi atau operasi. Di dalam synchronous programming, operasi dieksekusi satu per satu sehingga harus menunggu operasi yang lain selesai dijalankan agar dapat menjalankan operasi selanjutnya. Selain itu, synchronous programming dapat juga mengimplementasikan thread untuk melakukan beberapa operasi dalam satu waktu yang ada di dalam proses utama. Sedangkan di asynchronous programming, tidak terdapat blocking sehingga operasi tidak harus menunggu operasi lain selesai. Selain itu, terdapat konsep event-driven yang memungkinkan program mengeksekusi instruksi tanpa menunggu hasil, kemudian hasil ditangani secara asinkron setelah selesai.
+
+### Dalam penerapan JavaScript dan AJAX, terdapat penerapan paradigma event-driven programming. Jelaskan maksud dari paradigma tersebut dan sebutkan salah satu contoh penerapannya pada tugas ini.
+Event-driven programming merupakan pendekatan pemrograman di mana events memengaruhi eksekusi program secara keseluruhan. Hal ini bertujuan agar program dapat memproses interaksi pengguna agar dapat menerima respon terhadap kejadian tertentu. Penggunaan AJAX yang digunakan saat pengguna mengklik tombol "add products by AJAX" yang merupakan sebuah event listener merupakan salah satu contoh penerapan dari event-driven programming di dalam tugas ini.
+
+### Jelaskan penerapan asynchronous programming pada AJAX.
+Karena operasi yang terlibat di dalam data server memerlukan waktu yang tidak mudah diprediksi, maka AJAX melakukan pendekatan asynchronous programming yang tidak memerlukan blocking sehingga dapat menjalankan operasi yang melibatkan pengambilan data dari server. Dengan hal ini, terdapat berbagai fungsi yang menerapkan asynchronous programming, seperti callbacks yang merupakan parameter penanda yang akan dijalankan setelah suatu operasi selesai.
+
+### Pada PBP kali ini, penerapan AJAX dilakukan dengan menggunakan Fetch API daripada library jQuery. Bandingkanlah kedua teknologi tersebut dan tuliskan pendapat kamu teknologi manakah yang lebih baik untuk digunakan.
+Fetch API dan library JQuery merupakan kedua teknologi yang dapat diimplementasikan untuk menerapkan AJAX. Meskipun begitu, keduanya memiliki beberapa kelebihan dan kekurangannya masing-masing. Fetch API merupakan bagian dari JavaScript yang tidak memerlukan extension atau pengunduhan library tambahan untuk diterapkan. Selain itu, Fetch API pun menggunakan konsep promise yang dapat menangani dan menghindari callback hell dan juga lebih ringan untuk digunakan. Meskipun begitu, Fetch API memerlukan polyfill agar dapat diterapkan untuk browser yang lebih outdated.
+
+JQuery sendiri merupakan utility library yang telah menyiapkan banyak fungsi untuk membantu implementasi di dalam pemrograman, seperti animasi dan banyak lagi. Selain itu, JQuery menggunakan callback untuk menangani respon dan juga lebih mendukung untuk browser yang lebih outdated.
+
+Penggunaan keduanya pun bergantung terhadap kebutuhan masing-masing. Jika memerlukan banyak utilitas di dalam program tersebut dan juga perlu mendukung keperluan untuk browser yang outdated, JQuery dapat dijadikan pilihan yang tepat, sedangkan Fetch API digunakan untuk proyek yang hanya memerlukan asynchronous operation dan berfokus kepada browser modern karena sifatnya yang memenuhi standar modern.
+
+### Jelaskan bagaimana cara kamu mengimplementasikan checklist di atas secara step-by-step (bukan hanya sekadar mengikuti tutorial).
+Pertama-tama, buat beberapa fungsi baru seperti add_product_ajax yang menerima parameter request dan juga menambahkan dekorator @csrf_exempt. Setelah itu, lakukan routing untuk fungsi get_product_json dan add_product_ajax di dalam urls.py. Tampilkan data product dengan menggunakan fetch() API dan buat beberapa kode yang mengimplementasikan struktur card dan buat block script dan tambahkan function getProducts dan refreshProducts. Untuk mengimplementasikan modal sebagai form, gunakan bootstrap agar dapat memberikan tampilan dari modal. Setelah itu, buat fungsi baru bernama addProduct() di dalam block script. Setelah semua step yang dilakukan di atas selesai dijalankan, maka aplikasi web pun dapat menerapkan AJAX dan menampilkan modal sebagai form :3
+
 ## Tugas 4
 ### 1. Jelaskan manfaat dari setiap element selector dan kapan waktu yang tepat untuk menggunakannya.
 Terdapat beberapa element selector, seperti element selector, class selector, ID selector, dan attribute selector. Keempatnya memiliki fungsi masing-masing seperti berikut:

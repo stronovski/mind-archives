@@ -39,6 +39,28 @@
         padding: 10px;
     }
 
+    .card-container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-around;
+    }
+
+    .card {
+        width: 300px;
+        margin: 10px;
+        padding: 10px;
+        border: 1px solid #333;
+        background-color: rgb(33, 33, 33);
+        color: white;
+        border-radius: 10px;
+        text-align: center;
+    }
+
+    .card img {
+        max-width: 100%;
+        height: auto;
+    }
+
     th {
         background-color: #333;
         color: white;
@@ -61,6 +83,7 @@
         background-color: gray;
         color: white;
         border: none;
+        border-radius: 4px;
         
         cursor: pointer;
         margin-right: 5px;
@@ -166,74 +189,60 @@
 <h4 class = "name" style="font-style: italic; text-align: center;">Welcome home, </h5>
 <h4 class = "name-2" style="font-style: bold; text-align: center;">{{name}}.</h5>
 
-<!-- <h5>Class:</h5>
-<p>{{class}}</p> -->
-
 <!-- Tambahkan pesan dengan jumlah item -->
 <h5>You stored {{ products|length }} item(s) on this website</h5>
 
-<table>
-    <tr>
-        <th>Name</th>
-        <th>Amount</th>
-        <th>Price</th>
-        <th>Description</th>
-        <th>Date Added</th>
-        <th>Edit</th>
-        <th>Delete</th>
-    </tr>
+<!-- <table id="product_table"></table> -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Product</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form id="form" onsubmit="return false;">
+                    {% csrf_token %}
+                    <div class="mb-3">
+                        <label for="name" class="col-form-label">Name:</label>
+                        <input type="text" class="form-control" id="name" name="name"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="price" class="col-form-label">Price:</label>
+                        <input type="number" class="form-control" id="price" name="price"></input>
+                    </div>
+                    <div class="mb-3">
+                        <label for="description" class="col-form-label">Description:</label>
+                        <textarea class="form-control" id="description" name="description"></textarea>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary" id="button_add" data-bs-dismiss="modal">Add Product</button>
+            </div>
+        </div>
+    </div>
+</div>
 
-    {% comment %} Berikut cara memperlihatkan data produk di bawah baris ini {% endcomment %}
+<div id="product_cards" class="card-container">
+</div>
 
-    {% for product in products %}
-    <tr>
-        <td align="center">{{product.name}}</td>
-        <td align="center">
-            <a href="{% url 'main:add_amount' product.id %} "style="font-size: 5;">
-                <button>
-                +
-                </button>
-            </a> 
-
-            {{product.amount}}
-
-            <a href="{% url 'main:sub_amount' product.id %}" style="font-size: 5;">
-                <button>
-                -
-                </button>
-            </a> 
-        </td>
-        <td align="center">{{product.price}}</td>
-        <td align = "center">{{product.description}}</td>
-        <td align = "center">{{product.date_added}}</td>
-        <td>
-            <a href="{% url 'main:edit_product' product.pk %}">
-                <button>
-                    Edit
-                </button>
-            </a>
-        </td>
-        <td align="center"> 
-            <a href="{% url 'main:product_delete' product.id %}">
-                <button>
-                    Delete Product
-                </button>
-            </a> 
-        </td>
-    </tr>
-    {% endfor %}
-</table>
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+</div>
 
 <h5>Sesi terakhir login: {{ last_login }}</h5>
 
 <br />
 
 <div class="button-container">
-    <a href="{% url 'main:create_product' %}" class="button-link">
+    <!-- <a href="{% url 'main:create_product' %}" class="button-link">
         <button>
             Add New Product
         </button>
-    </a>
+    </a> -->
+
+    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add Product by AJAX</button>
 
     <a href="{% url 'main:logout' %}" class="button-link">
         <button>
@@ -270,5 +279,44 @@
     </div>
     <!-- Copyright -->
   </footer>
+
+  <script>
+    async function getProducts() {
+        return fetch("{% url 'main:get_product_json' %}").then((res) => res.json())
+    }
+
+    async function refreshProducts() {
+        const products = await getProducts();
+        const cardContainer = document.getElementById('product_cards');
+        cardContainer.innerHTML = '';
+
+        products.forEach((product) => {
+            const card = document.createElement('div');
+            card.className = 'card';
+            card.innerHTML = `
+                <h3>${product.fields.name}</h3>
+                <p>Price: ${product.fields.price}</p>
+                <p>Description: ${product.fields.description}</p>
+                <p>Date Added: ${product.fields.date_added}</p>
+            `;
+            
+
+            cardContainer.appendChild(card);
+        });
+    }
+
+    refreshProducts()
+
+    function addProduct() {
+        fetch("{% url 'main:add_product_ajax' %}", {
+            method: "POST",
+            body: new FormData(document.querySelector('#form'))
+        }).then(refreshProducts)
+
+        document.getElementById("form").reset()
+        return false
+    }
+    document.getElementById("button_add").onclick = addProduct
+</script>
 
 {% endblock content %}
